@@ -10,25 +10,21 @@ public class MissingNumberInArray {
     //if yes then continue else missing number is found
 
     public static void main(String[] args) {
-        int[] array = new int[]{2,1,4,6,5};
-        int arrayLength = array.length;
-        int missingNumber = 0;
+        int n = 10;
+        int[] inputArray = new int[]{1,3};
+        boolean[] numberState = new boolean[n+1];
+        int missingNum = 0;
 
-        for(int i=1; i<=arrayLength+1; i++){
-            boolean flag = false;
-            for(int j=0; j<arrayLength; j++){
-                if(i == array[j]){
-                    flag = true;
-                    break;
-                }
-                else {
-                    flag = false;
-                }
-            }
-            if(!flag){
-                missingNumber = i;
+        for(int i=0; i<inputArray.length; i++){
+            int indexOfNumberState = inputArray[i];
+            numberState[indexOfNumberState] = true;
+        }
+
+        for(int i=1; i<numberState.length; i++){
+            if(numberState[i] == false){
+                System.out.println(i);
             }
         }
-        System.out.println(missingNumber);
+
     }
 }
